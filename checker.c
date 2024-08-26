@@ -21,13 +21,13 @@ int chargeRateCheck(float chargeRate) {
 int batteryIsOk(float temperature, float soc, float chargeRate) {
     int status;
 
-    status = checkTemperature(temperature);
+    status = batteryTemp(temperature);
     if (status != 0) return status;
 
     status = checkSOC(soc);
     if (status != 0) return status;
 
-    status = checkChargeRate(chargeRate);
+    status = chargeRateCheck(chargeRate);
     return status;
 }
 
