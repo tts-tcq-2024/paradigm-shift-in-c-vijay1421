@@ -32,10 +32,15 @@ int chargeRateCheck(float chargeRate) {
 
 // Simplified main function to check all battery conditions
 int batteryIsOk(float temperature, float soc, float chargeRate) {
-  if (batteryTemp(temperature)) return 1;
-  if (checkSOC(soc)) return 1;
-  if (chargeRateCheck(chargeRate)) return 1; 
-  return 0; 
+  int tempError = batteryTemp(temperature);
+  int socError = checkSOC(soc);
+  int chargeRateError = chargeRateCheck(chargeRate);
+
+  // Combine all errors into a single decision point
+  if (tempError || socError || chargeRateError) {
+    return 1; // Error occurred
+  }
+  return 0; // All checks passed
 }
 
 int main() {
