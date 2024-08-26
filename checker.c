@@ -43,8 +43,8 @@ void printErrorMessage(int code) {
 int main() {
   int status;
   status = assert(batteryIsOk(25, 70, 0.7));
-  printErrorMessage(status)
+  printErrorMessage(status);
   status = assert(batteryIsOk(50, 85, 0)); 
-  printErrorMessage(status)
+  printErrorMessage(status);
   return 0;
 }
