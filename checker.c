@@ -9,7 +9,6 @@ int batteryTemp(float temperature) {
 int checkSOC(float soc) {
    if (soc < 20 || soc > 80) return 2;
     return 0; // soc OK
-   }
 }
 
 int chargeRateCheck(float chargeRate) {
@@ -42,9 +41,9 @@ void printErrorMessage(int code) {
 
 int main() {
   int status;
-  status = assert(batteryIsOk(25, 70, 0.7));
+  status = batteryIsOk(25, 70, 0.7);
   printErrorMessage(status);
-  status = assert(batteryIsOk(50, 85, 0)); 
+  status = batteryIsOk(50, 85, 0); 
   printErrorMessage(status);
   return 0;
 }
