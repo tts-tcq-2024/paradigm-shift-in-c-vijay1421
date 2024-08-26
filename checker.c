@@ -34,17 +34,21 @@ int chargeRateCheck(float chargeRate) {
   }
 }
 
-// Main function to check all battery conditions
+// Simplified main function to check all battery conditions
 int batteryIsOk(float temperature, float soc, float chargeRate) {
-  if (batteryTemp(temperature)) return 1;
-  if (checkSOC(soc)) return 1;
-  if (chargeRateCheck(chargeRate)) return 1;
+  if (batteryTemp(temperature)) return 1; // Error
+  if (checkSOC(soc)) return 1;            // Error
+  if (chargeRateCheck(chargeRate)) return 1; // Error
   return 0; // All checks passed
 }
 
 int main() {
   // Test cases
-  assert(batteryIsOk(25, 70, 0.7));  // Should pass, all conditions are OK
-  assert(batteryIsOk(50, 85, 0));   // Should fail, temperature and SOC out of range
+  assert(batteryIsOk(25, 70, 0.7) == 0);  // All conditions are OK
+  assert(batteryIsOk(50, 85, 0) == 1);   // Temperature and SOC out of range
+  assert(batteryIsOk(-5, 70, 0.7) == 1);  // Temperature out of range
+  assert(batteryIsOk(25, 85, 0.7) == 1);  // SOC out of range
+  assert(batteryIsOk(25, 70, 0.9) == 1);  // Charge rate out of range
+
   return 0;
 }
