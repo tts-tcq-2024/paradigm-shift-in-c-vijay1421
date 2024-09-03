@@ -3,7 +3,7 @@
  
 int checkValueRange(float value, float min, float max, const char* message) {
     if (value < min || value > max) {
-        printf("%s is out of range\n", message);
+        printf("%s\n", message);
         return 0;
     }
     return 1;
@@ -11,7 +11,7 @@ int checkValueRange(float value, float min, float max, const char* message) {
 int checkChargeRate(float value, float max, const char* message)
 {
     if (value > max) {
-        printf("%s is grater than the value\n", message);
+        printf("%s\n", message);
         return 0;
     }
     return 1;
@@ -19,15 +19,15 @@ int checkChargeRate(float value, float max, const char* message)
  
  
 int isTempOutOfRange(float temperature) {
-	return checkValueRange(temperature, 0, 45, "Temperature");
+	return checkValueRange(temperature, 0, 45, "Temperature is out of range");
 }
  
 int isSocOutOfRange(float soc) {
-	return checkValueRange(soc, 20, 80, "State of Charge");
+	return checkValueRange(soc, 20, 80, "State of Charge is out of range");
 }
  
 int isChargeRateOutOfRange(float chargeRate) {
-	return checkValueRange(chargeRate,0.8, "Charge Rate !");
+	return checkValueRange(chargeRate,0.8, "Charge Rate is grater than the value !");
 }
  
 int batteryIsOk(float temperature, float soc, float chargeRate) {
