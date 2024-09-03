@@ -19,15 +19,15 @@ int checkChargeRate(float value, float max, const char* message)
  
  
 int isTempOutOfRange(float temperature) {
-	return checkRange(temperature, 0, 45, "Temperature");
+	return checkValueRange(temperature, 0, 45, "Temperature");
 }
  
 int isSocOutOfRange(float soc) {
-	return checkRange(soc, 20, 80, "State of Charge");
+	return checkValueRange(soc, 20, 80, "State of Charge");
 }
  
 int isChargeRateOutOfRange(float chargeRate) {
-	return checkChargeRate(chargeRate,0.8, "Charge Rate !");
+	return checkValueRange(chargeRate,0.8, "Charge Rate !");
 }
  
 int batteryIsOk(float temperature, float soc, float chargeRate) {
